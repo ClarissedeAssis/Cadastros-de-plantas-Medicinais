@@ -1,0 +1,13 @@
+.error{
+	color: red;
+	font-size: 14px; 
+}
+
+hr{
+	border: 2px solid red;
+	background-color: red;
+}
+
+body{
+	background-color: white;
+}
