@@ -1,0 +1,30 @@
+<ion-content [fullscreen]="true">
+</ion-content>
+
+<ion-footer slot="fixed" class="ion-no-border">
+  <ion-fab vertical="top" horizontal="end">
+    <ion-fab-button class="dark" (click)="enviar()">
+      <ion-icon name="arrow-forward-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>  
+
+  <ion-row>
+    <ion-list lines="full"> 
+      <ion-list-header class="ion-margin">
+        <ion-label>Foto de Perfil</ion-label>
+      </ion-list-header>
+      <ion-item-group class="ion-margin-horizontal ion-margin-bottom">
+        <form [formGroup]="formGroup" (ngSubmit)="enviar()">
+          <div>
+            <div *ngIf="imagemPreview">
+              <ion-img [src]="imagemPreview"></ion-img>
+            </div>
+            <ion-item lines="none">
+              <input type="file" (change)="onFileSelected($event)">
+            </ion-item>
+          </div>
+        </form>
+      </ion-item-group>
+    </ion-list>
+  </ion-row>
+</ion-footer>

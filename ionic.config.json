@@ -1,0 +1,7 @@
+{
+  "name": "HerbaBase_Catalogo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,177 @@
+<ion-content [fullscreen]="true">
+  <ion-header class="ion-no-border" slot="fixed"> 
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button mode="md" defaultHref="tabs/consulta" class="btnBg btnBgLigth"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <div [style.backgroundImage]="'url(' + planta.arquivoFoto +')'" class="bg"></div>
+  
+  <ion-list lines="none" class="ion-margin">
+    <ion-item>
+      <ion-label class="medium">
+        <p>
+          <ion-text class="large text-weight-500" color="dark" style="font-size: 1.3rem;">
+            <strong>{{ planta.nomePopular }}</strong>
+          </ion-text>
+        </p>
+        {{ planta.nomeCientifico }}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <ion-text class="large text-weight-500" color="dark">
+          <strong>Origem</strong>
+          <div style="margin-top: 4px;">
+            <p class="medium xlarge mt" style="margin: 0;">
+              {{ planta.origem }}
+            </p>
+          </div>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    
+    <ion-item class="description" lines="full">
+      <ion-label>
+        <ion-text class="large text-weight-500" color="dark">
+          <strong>Aplicações Medicinais</strong>
+          <div class="text-container" style="margin-top: 4px; margin-left: var(--ion-margin); margin-right: var(--ion-margin);"> 
+            <p class="medium" [ngClass]="{'expanded': verMais}" style="margin: 0;">
+              {{ planta.aplicacoesMedicinais }}
+            </p>
+            <ion-button size="small" fill="clear" color="primary" class="ion-no-margin" (click)="alternaVerMais()" style="margin-left: 0;">
+              {{ verMais ? 'Ver menos' : 'Ver mais' }}
+            </ion-button>
+          </div>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+
+    <ion-item class="avaliacao-container">
+      <ion-row class="linha-avaliacao" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding-left: var(--ion-margin); padding-right: var(--ion-margin);">
+        <div class="estrelas" style="display: flex; align-items: center;">
+          <ion-icon name="star" color="warning"></ion-icon>
+          <span>{{ planta.avaliacaoGeral || 0 | number:'1.1-1' }}</span>
+        </div>
+        <div class="icones" style="display: flex; gap: 10px;">
+          <ion-icon name="chatbubble-outline" (click)="abrirModalComentarios()"></ion-icon>
+          <ion-icon name="bookmark-outline" (click)="abrirModalCategorias()"></ion-icon>
+        </div>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-modal #modalComentarios [initialBreakpoint]="1" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+  <ng-template>
+    <ion-content class="modal-content">
+      <div class="comentarios-header">Avaliações</div>
+      <ion-item-sliding *ngFor="let comentario of comentarios">
+        <ion-item>
+          <ion-label>
+            <div class="comentario-container">
+              <div class="comentario-header">
+                
+
+                <h2 class="comentario-nome">{{ comentario.nomeUsuario }}</h2>
+                <span class="caixaAvaliacao">
+                  <span *ngFor="let star of estrelas; let i = index" [class.filled]="i < comentario.avaliacao">
+                    <ion-icon name="star"></ion-icon>
+                  </span>
+                </span>
+              </div>
+              <p>{{ comentario.descricao }}</p>
+              <p *ngIf="comentario.idUsuario === usuario?.id" class="enviar-texto" color="primary" (click)="excluirComentario(comentario.id)">Excluir</p>
+            </div>
+          </ion-label>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-content>
+
+    <ion-footer class="footer-fixed">
+      <ion-toolbar class="footer-container">
+    
+        <!-- Se o usuário AINDA NÃO comentou, mostra o formulário -->
+        <ng-container *ngIf="!comentarioExistente; else mensagemJaComentou">
+          <div class="estrela-footer-container">
+            <div class="linhaCaixaAvaliacao" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding-left: var(--ion-margin); padding-right: var(--ion-margin);">
+              <p class="texto-avaliacao">O quanto essa<br>planta te ajudou?</p>
+              <div class="estrela-container" style="display: flex; gap: 5px;">
+                <ion-icon *ngFor="let estrela of estrelas; let i = index" 
+                          name="star" 
+                          [color]="getCorEstrela(i)"
+                          (click)="avaliar(i + 1)"
+                          class="estrela-icon">
+                </ion-icon>
+              </div>
+            </div>
+          </div>
+    
+          <ion-row>
+            <ion-col size="12">
+              <form [formGroup]="formGroup" (ngSubmit)="adicionarComentario()">
+                <ion-item lines="none" class="comentario-containerr">
+                  <ion-textarea 
+                    formControlName="novoComentario" 
+                    placeholder="Compartilhe suas experiências!" 
+                    class="comentario-input"
+                    auto-grow="true">
+                  </ion-textarea>
+                </ion-item>
+                <p class="enviar-texto" color="primary"  (click)="nota > 0 ? adicionarComentario() : null"
+                  [class.disabled]="nota === 0">Enviar</p>
+              </form>
+            </ion-col>
+          </ion-row>
+        </ng-container>
+    
+        <!-- Se o usuário JÁ comentou, mostra a mensagem -->
+        <ng-template #mensagemJaComentou>
+          <ion-row>
+            <ion-col size="12">
+              <div class="mensagem-aviso" style="text-align: center; padding: 1rem;">
+                <ion-text color="medium">
+                  Para fazer um novo comentário, você precisa apagar o comentário anterior.
+                </ion-text>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ng-template>
+    
+      </ion-toolbar>
+    </ion-footer>
+    
+  </ng-template>
+</ion-modal>
+
+<ion-modal #modalCategorias [initialBreakpoint]="1" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+  <ng-template>
+    <ion-content class="modal-content">
+      <div class="popover">
+        <ion-searchbar placeholder="Pesquisar pasta de favoritos" (ionInput)="filtrarCategorias($event)"></ion-searchbar>
+      </div>
+
+      <ion-list *ngIf="exibirCategorias">
+        <ion-radio-group [(ngModel)]="categoriaSelecionadas">
+         <ion-item *ngFor="let categoria of categoriasFiltradas">
+            <ion-label>{{ categoria.descricao }}</ion-label>
+            <ion-radio slot="start" [value]="categoria.id"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+
+      <ion-footer no-border class="footer-fixed">
+        <ion-toolbar class="footer-container">
+          <ion-row>
+            <ion-col size="12">
+              <p class="enviar-texto" color="primary" (click)="salvarCategoriasSelecionadas()">Salvar</p>
+            </ion-col>
+          </ion-row>
+        </ion-toolbar>
+      </ion-footer>      
+    </ion-content>
+  </ng-template>
+</ion-modal>

@@ -1,0 +1,55 @@
+<ion-header class="ion-no-border">
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label>Olá, {{ nomeUsuario }}!</ion-label>
+      <ion-avatar slot="end">
+        <img src="/assets/imgs/logo.png"/>
+      </ion-avatar>
+    </ion-item>
+  </ion-list>
+  <div class="popover">
+    <ion-searchbar [(ngModel)]="searchTerm" placeholder="Pesquisar" (ionInput)="filterPlants()"></ion-searchbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-margin-top">
+    <ion-row class="custom-row">
+      <ion-col 
+        size="6" 
+        *ngFor="let planta of filteredPlants; let i = index; let last = last"
+        [ngClass]="{'last-item-left': last && filteredPlants.length % 2 !== 0}"
+      >
+        <ion-card class="bgCard" [routerLink]="['/detalhes', planta.id]">
+          <ion-card-header>
+            <ion-label class="medium">
+              <p class="xlarge mt text-weight-500">
+                <ion-text color="dark">
+                  <strong>{{planta.nomePopular}}</strong>
+                </ion-text>
+              </p>
+              {{planta.nomeCientifico}}
+            </ion-label>
+            <ion-col slot="end" class="ion-text-end">
+              <ion-row class="rating medium">
+                <ion-icon name="star" color="warning"></ion-icon>
+                {{planta.avaliacaoGeral}}
+              </ion-row>
+            </ion-col>
+          </ion-card-header>
+          <ion-card-content>
+            <img [src]="plantaService.getFotoUrl(planta.arquivoFoto)" alt="Foto da Planta">
+
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="abrirOpcoesFiltro()">
+      <ion-icon name="funnel-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>  
+</ion-content>

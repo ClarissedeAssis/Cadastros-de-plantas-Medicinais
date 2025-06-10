@@ -1,0 +1,14 @@
+<ion-tabs #tabs (ionTabsDidChange)="setCurrentTab()">
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="consulta">
+      <ion-icon [name]="selectedTab == 'consulta' ? 'rose' : 'rose-outline'"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="categoria">
+      <ion-icon [name]="selectedTab == 'categoria' ? 'bookmark' :'bookmark-outline'"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="dados">
+      <ion-icon [name]="selectedTab == 'dados' ? 'person' :'person-outline'"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>

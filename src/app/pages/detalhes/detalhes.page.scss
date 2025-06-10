@@ -1,0 +1,300 @@
+ion-header {
+    ion-toolbar {
+      --background: transparent;
+      --ion-color-base: transparent;
+    }
+    
+    ion-back-button {
+      min-width: 0 !important;
+      min-height: 0 !important;
+    }
+  
+    ion-back-button::part(native) {
+      padding: 0 8px;
+    }
+  }
+  .popover {
+    margin: 0;
+    padding: 10px 8px 0 8px; /* Adiciona espaçamento interno de forma mais controlada */
+  
+    ion-searchbar {
+      --border-radius: 20px;
+      margin: 0; /* Remove margem externa */
+    }
+  }
+  
+  
+  div.bg {
+    position: relative;
+    width: 100%;
+    height: 25rem;
+    border-radius: 0 0 20px 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: var(--ion-color-light);
+  }
+  
+  .btnBg {
+    height: 4vh !important;
+    width: 4vh !important;
+    --border-radius: 50%;
+    
+    ion-icon {
+      font-size: 1.5rem;
+    }
+  }
+  
+  .btnBgLigth {
+    --background: white;
+  }
+  
+  ion-list {
+    .item {
+      ion-label,
+      ion-row {
+        color: gray;
+      }
+  
+      ion-col {
+        max-width: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+      }
+  
+      .rating {
+        ion-icon {
+          font-size: var(ion-size-small);
+          margin-right: 3px;
+        }
+      }
+  
+      .mt {
+        margin-top: 1.5vh;
+      }
+    }
+  }
+  
+  .description {
+    p {
+      margin-top: 10px;
+      display: -webkit-box;
+      -webkit-line-clamp: 9;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: justify;
+    }
+
+    .expanded {
+      display: block;
+      -webkit-line-clamp: unset;
+      -webkit-box-orient: unset;
+      overflow: visible;
+      text-overflow: unset;
+    }
+  
+ ion-button {
+      font-weight: bold;
+      text-align: justify;
+    }
+  }
+
+  .message-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+
+    ion-input {
+        background: #fff;
+        border-radius: 20px;
+        height: 48px;
+        padding-left: 30px; // Afastando o placeholder da borda
+        padding-right: 10px;
+        flex: 1;
+    }
+
+    ion-icon {
+        font-size: 32px; // Ajuste o tamanho conforme necessário
+        color: rgb(105, 185, 105); // Define a cor do ícone
+    }
+}
+
+.disabled-icon {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.avaliacaoManga {
+  margin-bottom: 3.5vh;
+}
+
+.avaliacaoManga ion-icon {
+  margin-bottom: -0.2vh;
+}
+
+.caixaAvaliacao span {
+  font-size: 1.5vh;
+  color: #a5a1a16f; /* Cor das estrelas vazias */
+}
+
+.linhaCaixaAvaliacao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.estrela-footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-left: var(--ion-margin);
+  padding-right: var(--ion-margin);
+}
+
+.texto-avaliacao {
+  padding: 10px;
+}
+
+/* Estilo para as estrelas preenchidas */
+.caixaAvaliacao span.filled ion-icon {
+  color: gold; /* Cor das estrelas preenchidas */
+}
+
+/* Estilo das estrelas vazias, apenas uma cor neutra */
+.caixaAvaliacao span ion-icon {
+  color: #cfcfcf; /* Cor das estrelas não preenchidas */
+}
+
+.comentarios-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 0;
+  border-bottom: 2px solid #ccc;
+  margin: 20px 0 10px 0;
+}
+
+.comentario-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.estrelas-direita {
+  display: flex;
+  margin-left: auto;
+}
+
+ion-modal {
+  --border-radius: 20px 20px 0 0; /* Apenas o topo arredondado */
+}
+
+.footer-container {
+  padding: 10px 15px; /* Espaçamento interno */
+}
+
+.comentario-container {
+  border-radius: 8px; /* Bordas arredondadas */
+  padding: 10px;
+  margin-bottom: 10px; /* Espaçamento entre os comentários */
+}
+
+.footer-fixed {
+  background-color: transparent !important; /* Remove o fundo verde do footer */
+}
+
+.linha-avaliacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.estrelas {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Alinha à esquerda */
+}
+
+.estrelas ion-icon {
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+.icones {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Alinha à direita */
+  gap: 15px; /* Espaço entre os ícones */
+}
+
+.icones ion-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.comentario-containerr {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  padding: 10px;
+  --background: #f1f1f1;
+  --border-style: none;
+  --lines: none;
+}
+
+.enviar-texto.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.enviar-texto {
+  text-align: right;  /* Alinha o texto à direita */
+  font-size: 1.1rem;  /* Ajuste o tamanho da fonte conforme necessário */
+  color: var(--ion-color-primary);
+  cursor: pointer;  /* Para dar o visual de clique */
+}
+
+.comentario-input {
+  min-height: 80px;  /* Define uma altura mínima para o campo */
+  resize: none;  /* Evita que o campo seja redimensionado manualmente */
+}
+
+.footer-fixed {
+  border-top: none !important;
+  box-shadow: none !important;
+}
+
+.footer-container {
+  --border-width: 0 !important;
+  --box-shadow: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+.mensagem-aviso {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px 0;
+  font-size: 0.95rem;
+}
+
+.foto-perfil {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+
+

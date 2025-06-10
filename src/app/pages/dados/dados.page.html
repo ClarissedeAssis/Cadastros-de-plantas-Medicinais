@@ -1,0 +1,56 @@
+<ion-content [fullscreen]="true">
+</ion-content>
+
+<ion-footer class="ion-no-border">
+
+  <ion-fab vertical="top" horizontal="end">
+    <ion-fab-button class="dark" (click)="salvar()">
+      <ion-icon name="arrow-forward-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-row>
+    <ion-list lines="full">
+      <ion-list-header class="ion-margin">
+        <ion-label>Meus dados</ion-label>
+      </ion-list-header>
+
+      <ion-item-group class="ion-margin-horizontal ion-margin-bottom">
+        <form [formGroup]="formGroup" (ngSubmit)="salvar()">
+
+        
+          <img [src]="urlFoto" *ngIf="urlFoto" alt="Foto do usuário" style="width: 150px; height: 150px; border-radius: 50%;">
+
+          <ion-item>
+            <ion-label position="stacked">Foto de Perfil</ion-label>
+            <input type="file" (change)="selecionarFoto($event)" accept="image/*">
+          </ion-item>
+          
+
+          <div>
+            <ion-item>
+              <ion-input type="text" formControlName="nome" name="nome" placeholder="Nome de usuário"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="text" formControlName="email" name="email" placeholder="E-mail" readonly></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-icon [name]="type ? 'eye-outline' : 'eye-off-outline'" slot="end" color="medium" (click)="changeType()"></ion-icon>
+              <ion-input [type]="type ? 'password' : 'text'" formControlName="senha" placeholder="Senha"></ion-input>
+            </ion-item>
+          </div>
+        </form>
+
+        <ion-item lines="none" class="ion-padding-top">
+          <ion-text color="dark" slot="end" (click)="encerrarAutenticacao()">
+            <strong>Sair</strong>
+          </ion-text>
+        </ion-item>
+
+      </ion-item-group>
+    </ion-list>
+  </ion-row>
+
+</ion-footer>

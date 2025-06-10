@@ -1,0 +1,63 @@
+<ion-header class="ion-no-border">
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label>Pastas de favoritos</ion-label>
+      <ion-avatar slot="end">
+        <img src="/assets/imgs/logo.png"/>
+      </ion-avatar>
+    </ion-item>
+  </ion-list>
+  <div class="popover">
+    <ion-searchbar [(ngModel)]="searchTerm" placeholder="Pesquisar categorias" (ionInput)="filterCategorias()"></ion-searchbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-margin-top">
+    <ion-row class="custom-row">
+      <ion-col 
+        size="6" 
+        *ngFor="let categoria of filteredCategorias; let i = index; let last = last"
+        [ngClass]="{'last-item-left': last && filteredCategorias.length % 2 !== 0}"
+      >
+        <ion-card class="bgCard" (click)="visualizarCategoria(categoria.id)">
+          <ion-card-header>
+            <ion-label class="medium">
+              <p class="xlarge mt text-weight-500">
+                <ion-text color="dark">
+                  <strong>{{ categoria.descricao }}</strong>
+                </ion-text>
+              </p>
+            </ion-label>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="abrirModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-modal #modal [initialBreakpoint]="0.30" [breakpoints]="[0, 0.30]">
+  <ng-template>
+    <ion-content class="modal-content">
+      <div class="comentarios-header">Crie uma pasta de favoritos</div>
+      <div class="comentario-container">
+      <ion-item lines="none" class="comentario-containerr">
+        <ion-input type="text" [(ngModel)]="descricao" name="descricao" placeholder="Dê um nome para sua pasta" required></ion-input>
+      </ion-item>
+      <div class="ion-padding">
+        <p class="enviar-texto" 
+           (click)="descricao.trim() && createCategoria()" 
+           [class.disabled]="!descricao.trim()">
+          Criar
+        </p>
+      </div>
+    </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

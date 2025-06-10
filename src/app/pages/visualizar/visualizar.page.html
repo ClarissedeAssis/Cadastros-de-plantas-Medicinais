@@ -1,0 +1,60 @@
+<ion-header class="ion-no-border">
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label>{{ categoria?.descricao }}</ion-label>
+      <ion-buttons slot="start">
+        <ion-back-button mode="md" defaultHref="tabs/categoria"></ion-back-button>
+      </ion-buttons>
+      <ion-avatar slot="end">
+        <img src="/assets/imgs/logo.png"/>
+      </ion-avatar>
+    </ion-item>
+  </ion-list>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-margin-top">
+    <ion-row class="custom-row">
+      <ion-col 
+        size="6" 
+        *ngFor="let planta of plantasAssociadas; let last = last" 
+        [ngClass]="{'last-item-left': last && plantasAssociadas.length % 2 !== 0}"
+      >
+        <ion-card class="bgCard" [routerLink]="['/detalhes', planta.id]">
+          <ion-card-header>
+            <ion-label class="medium">
+              <p class="xlarge mt text-weight-500">
+                <ion-text color="dark">
+                  <strong>{{ planta.nomePopular }}</strong>
+                </ion-text>
+              </p>
+              {{planta.nomeCientifico}}
+            </ion-label>
+            <ion-col slot="end" class="ion-text-end">
+              <ion-row class="rating medium">
+                <ion-icon name="pricetag-outline" color="secondary"></ion-icon>
+              </ion-row>
+            </ion-col>
+          </ion-card-header>
+          <ion-card-content>
+            <img *ngIf="planta?.arquivoFoto" [src]="planta.arquivoFoto" />
+
+          </ion-card-content>
+          <ion-button fill="clear" color="danger" (click)="removerPlanta(planta.id)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ng-template #noPlantas>
+    <p>Não há plantas associadas a esta categoria.</p>
+  </ng-template>
+
+
+
+ 
+
+
+</ion-content>
