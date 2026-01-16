@@ -14,7 +14,7 @@ Este repositório reúne todas as camadas do sistema:
 - Os dados são persistidos no banco de dados MySQL.
 - O aplicativo mobile consome a API para exibir as plantas e permitir interações dos usuários.
 
-## Tecnologias usadas
+## Tecnologias utilizadas
 - Web (Admin): PHP, HTML, CSS
 - Backend / API: Java
 - Banco de Dados: MySQL
