@@ -1,0 +1,94 @@
+<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
+<jasperReport name="planta" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="31b97149-00b1-4103-bae4-2fa68bdddfb2">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value="aGVyYmFiYXNlLnBsYW50YSBBUyAsMjYsMTA5LDBiM2QyM2E4LTVkMDMtNDFjZC04YjdlLTY3ZWEw&#xa;NGQ3NDY5Njs="/>
+	<query language="sql"><![CDATA[SELECT id,
+	`nomePopular`,
+	`nomeCientifico`,
+	origem,
+	`aplicacoesMedicinais`,
+	`arquivoFotoPlanta`
+FROM herbabase.planta]]></query>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="planta"/>
+	</field>
+	<field name="nomePopular" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nomePopular"/>
+		<property name="com.jaspersoft.studio.field.label" value="nomePopular"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="planta"/>
+	</field>
+	<field name="nomeCientifico" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nomeCientifico"/>
+		<property name="com.jaspersoft.studio.field.label" value="nomeCientifico"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="planta"/>
+	</field>
+	<field name="origem" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="origem"/>
+		<property name="com.jaspersoft.studio.field.label" value="origem"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="planta"/>
+	</field>
+	<field name="aplicacoesMedicinais" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="aplicacoesMedicinais"/>
+		<property name="com.jaspersoft.studio.field.label" value="aplicacoesMedicinais"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="planta"/>
+	</field>
+	<field name="arquivoFotoPlanta" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="arquivoFotoPlanta"/>
+		<property name="com.jaspersoft.studio.field.label" value="arquivoFotoPlanta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="planta"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch"/>
+	<pageHeader height="35" splitType="Stretch"/>
+	<columnHeader height="35" splitType="Stretch">
+		<element kind="staticText" uuid="ef8308b1-73b5-4009-8ef3-86474fabbc7c" x="0" y="0" width="60" height="30">
+			<text><![CDATA[id]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="102c59e0-e889-4e4b-8a06-141b58450269"/>
+		</element>
+		<element kind="staticText" uuid="9a8dd4c2-0dc6-4452-bc9d-906a19fadd18" x="60" y="0" width="140" height="30">
+			<text><![CDATA[nomePopular]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1929bead-10a9-4a0b-9a49-82786874a6c0"/>
+		</element>
+		<element kind="staticText" uuid="a63e6c7c-8662-4219-92b4-d0cb9d0616c3" x="200" y="0" width="150" height="30">
+			<text><![CDATA[nomeCientifico]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e682c12d-3cd7-481d-b33f-aa38de876a68"/>
+		</element>
+		<element kind="staticText" uuid="f897f4a9-304b-4124-beb8-67cde3a4afd7" x="350" y="-1" width="100" height="30">
+			<text><![CDATA[origem]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cd904cf9-d430-4316-b5e9-8989466cce75"/>
+		</element>
+		<element kind="staticText" uuid="7748681c-8b74-4e23-9164-75998b44152d" x="450" y="0" width="110" height="30">
+			<text><![CDATA[aplicacoesMedicinais]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="752e3cbb-b57e-46b5-930a-cc3e7459e5b4"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<element kind="textField" uuid="92e4a273-7055-420c-a515-354f52b73eb0" x="0" y="0" width="60" height="30">
+				<expression><![CDATA[$F{id}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="102c59e0-e889-4e4b-8a06-141b58450269"/>
+			</element>
+			<element kind="textField" uuid="6ebf9585-af94-4478-b405-64ceeccafbfb" x="60" y="0" width="140" height="30">
+				<expression><![CDATA[$F{nomePopular}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1929bead-10a9-4a0b-9a49-82786874a6c0"/>
+			</element>
+			<element kind="textField" uuid="275f72c2-1478-435f-8d03-eb062858fc7c" x="200" y="0" width="150" height="30">
+				<expression><![CDATA[$F{nomeCientifico}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e682c12d-3cd7-481d-b33f-aa38de876a68"/>
+			</element>
+			<element kind="textField" uuid="9fe4ad5c-03ef-49d0-8bf4-3dcab07bff62" x="350" y="0" width="100" height="30">
+				<expression><![CDATA[$F{origem}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cd904cf9-d430-4316-b5e9-8989466cce75"/>
+			</element>
+			<element kind="textField" uuid="7b8fb411-5765-4572-a47c-d22150c05b1b" x="450" y="0" width="110" height="30">
+				<expression><![CDATA[$F{aplicacoesMedicinais}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="752e3cbb-b57e-46b5-930a-cc3e7459e5b4"/>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>
